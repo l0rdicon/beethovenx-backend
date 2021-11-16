@@ -245,6 +245,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): MasterChef
     masterChefs(
         """
@@ -255,6 +260,11 @@ type Query {
         orderBy: MasterChef_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: MasterChef_filter
     ): [MasterChef!]!
     pool(
@@ -263,6 +273,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Pool
     pools(
         """
@@ -273,6 +288,11 @@ type Query {
         orderBy: Pool_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Pool_filter
     ): [Pool!]!
     rewarder(
@@ -281,6 +301,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Rewarder
     rewarders(
         """
@@ -291,6 +316,11 @@ type Query {
         orderBy: Rewarder_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Rewarder_filter
     ): [Rewarder!]!
     user(
@@ -299,6 +329,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): User
     users(
         """
@@ -309,6 +344,11 @@ type Query {
         orderBy: User_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: User_filter
     ): [User!]!
 }
@@ -381,6 +421,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): MasterChef
     masterChefs(
         """
@@ -391,6 +436,11 @@ type Subscription {
         orderBy: MasterChef_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: MasterChef_filter
     ): [MasterChef!]!
     pool(
@@ -399,6 +449,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Pool
     pools(
         """
@@ -409,6 +464,11 @@ type Subscription {
         orderBy: Pool_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Pool_filter
     ): [Pool!]!
     rewarder(
@@ -417,6 +477,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Rewarder
     rewarders(
         """
@@ -427,6 +492,11 @@ type Subscription {
         orderBy: Rewarder_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Rewarder_filter
     ): [Rewarder!]!
     user(
@@ -435,6 +505,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): User
     users(
         """
@@ -445,6 +520,11 @@ type Subscription {
         orderBy: User_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: User_filter
     ): [User!]!
 }

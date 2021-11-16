@@ -426,6 +426,7 @@ type JoinExit {
     tx: Bytes!
     type: InvestType!
     user: User!
+    valueUSD: BigDecimal!
 }
 
 input JoinExit_filter {
@@ -493,6 +494,14 @@ input JoinExit_filter {
     user_not_in: [String!]
     user_not_starts_with: String
     user_starts_with: String
+    valueUSD: BigDecimal
+    valueUSD_gt: BigDecimal
+    valueUSD_gte: BigDecimal
+    valueUSD_in: [BigDecimal!]
+    valueUSD_lt: BigDecimal
+    valueUSD_lte: BigDecimal
+    valueUSD_not: BigDecimal
+    valueUSD_not_in: [BigDecimal!]
 }
 
 enum JoinExit_orderBy {
@@ -504,6 +513,7 @@ enum JoinExit_orderBy {
     tx
     type
     user
+    valueUSD
 }
 
 type LatestPrice {
@@ -512,7 +522,7 @@ type LatestPrice {
     id: ID!
     poolId: Pool!
     price: BigDecimal!
-    priceUsd: BigDecimal!
+    priceUSD: BigDecimal!
     pricingAsset: Bytes!
 }
 
@@ -554,14 +564,14 @@ input LatestPrice_filter {
     poolId_not_starts_with: String
     poolId_starts_with: String
     price: BigDecimal
-    priceUsd: BigDecimal
-    priceUsd_gt: BigDecimal
-    priceUsd_gte: BigDecimal
-    priceUsd_in: [BigDecimal!]
-    priceUsd_lt: BigDecimal
-    priceUsd_lte: BigDecimal
-    priceUsd_not: BigDecimal
-    priceUsd_not_in: [BigDecimal!]
+    priceUSD: BigDecimal
+    priceUSD_gt: BigDecimal
+    priceUSD_gte: BigDecimal
+    priceUSD_in: [BigDecimal!]
+    priceUSD_lt: BigDecimal
+    priceUSD_lte: BigDecimal
+    priceUSD_not: BigDecimal
+    priceUSD_not_in: [BigDecimal!]
     price_gt: BigDecimal
     price_gte: BigDecimal
     price_in: [BigDecimal!]
@@ -583,7 +593,7 @@ enum LatestPrice_orderBy {
     id
     poolId
     price
-    priceUsd
+    priceUSD
     pricingAsset
 }
 
@@ -1485,6 +1495,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): AmpUpdate
     ampUpdates(
         """
@@ -1495,6 +1510,11 @@ type Query {
         orderBy: AmpUpdate_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: AmpUpdate_filter
     ): [AmpUpdate!]!
     balancer(
@@ -1503,6 +1523,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Balancer
     balancerSnapshot(
         """
@@ -1510,6 +1535,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): BalancerSnapshot
     balancerSnapshots(
         """
@@ -1520,6 +1550,11 @@ type Query {
         orderBy: BalancerSnapshot_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: BalancerSnapshot_filter
     ): [BalancerSnapshot!]!
     balancers(
@@ -1531,6 +1566,11 @@ type Query {
         orderBy: Balancer_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Balancer_filter
     ): [Balancer!]!
     gradualWeightUpdate(
@@ -1539,6 +1579,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): GradualWeightUpdate
     gradualWeightUpdates(
         """
@@ -1549,6 +1594,11 @@ type Query {
         orderBy: GradualWeightUpdate_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: GradualWeightUpdate_filter
     ): [GradualWeightUpdate!]!
     investment(
@@ -1557,6 +1607,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Investment
     investments(
         """
@@ -1567,6 +1622,11 @@ type Query {
         orderBy: Investment_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Investment_filter
     ): [Investment!]!
     joinExit(
@@ -1575,6 +1635,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): JoinExit
     joinExits(
         """
@@ -1585,6 +1650,11 @@ type Query {
         orderBy: JoinExit_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: JoinExit_filter
     ): [JoinExit!]!
     latestPrice(
@@ -1593,6 +1663,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): LatestPrice
     latestPrices(
         """
@@ -1603,6 +1678,11 @@ type Query {
         orderBy: LatestPrice_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: LatestPrice_filter
     ): [LatestPrice!]!
     pool(
@@ -1611,6 +1691,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Pool
     poolHistoricalLiquidities(
         """
@@ -1621,6 +1706,11 @@ type Query {
         orderBy: PoolHistoricalLiquidity_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: PoolHistoricalLiquidity_filter
     ): [PoolHistoricalLiquidity!]!
     poolHistoricalLiquidity(
@@ -1629,6 +1719,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): PoolHistoricalLiquidity
     poolShare(
         """
@@ -1636,6 +1731,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): PoolShare
     poolShares(
         """
@@ -1646,6 +1746,11 @@ type Query {
         orderBy: PoolShare_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: PoolShare_filter
     ): [PoolShare!]!
     poolSnapshot(
@@ -1654,6 +1759,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): PoolSnapshot
     poolSnapshots(
         """
@@ -1664,6 +1774,11 @@ type Query {
         orderBy: PoolSnapshot_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: PoolSnapshot_filter
     ): [PoolSnapshot!]!
     poolToken(
@@ -1672,6 +1787,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): PoolToken
     poolTokens(
         """
@@ -1682,6 +1802,11 @@ type Query {
         orderBy: PoolToken_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: PoolToken_filter
     ): [PoolToken!]!
     pools(
@@ -1693,6 +1818,11 @@ type Query {
         orderBy: Pool_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Pool_filter
     ): [Pool!]!
     priceRateProvider(
@@ -1701,6 +1831,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): PriceRateProvider
     priceRateProviders(
         """
@@ -1711,6 +1846,11 @@ type Query {
         orderBy: PriceRateProvider_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: PriceRateProvider_filter
     ): [PriceRateProvider!]!
     swap(
@@ -1719,6 +1859,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Swap
     swaps(
         """
@@ -1729,6 +1874,11 @@ type Query {
         orderBy: Swap_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Swap_filter
     ): [Swap!]!
     token(
@@ -1737,6 +1887,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Token
     tokenPrice(
         """
@@ -1744,6 +1899,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): TokenPrice
     tokenPrices(
         """
@@ -1754,6 +1914,11 @@ type Query {
         orderBy: TokenPrice_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: TokenPrice_filter
     ): [TokenPrice!]!
     tokenSnapshot(
@@ -1762,6 +1927,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): TokenSnapshot
     tokenSnapshots(
         """
@@ -1772,6 +1942,11 @@ type Query {
         orderBy: TokenSnapshot_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: TokenSnapshot_filter
     ): [TokenSnapshot!]!
     tokens(
@@ -1783,6 +1958,11 @@ type Query {
         orderBy: Token_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Token_filter
     ): [Token!]!
     tradePair(
@@ -1791,6 +1971,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): TradePair
     tradePairSnapshot(
         """
@@ -1798,6 +1983,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): TradePairSnapshot
     tradePairSnapshots(
         """
@@ -1808,6 +1998,11 @@ type Query {
         orderBy: TradePairSnapshot_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: TradePairSnapshot_filter
     ): [TradePairSnapshot!]!
     tradePairs(
@@ -1819,6 +2014,11 @@ type Query {
         orderBy: TradePair_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: TradePair_filter
     ): [TradePair!]!
     user(
@@ -1827,6 +2027,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): User
     userInternalBalance(
         """
@@ -1834,6 +2039,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): UserInternalBalance
     userInternalBalances(
         """
@@ -1844,6 +2054,11 @@ type Query {
         orderBy: UserInternalBalance_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: UserInternalBalance_filter
     ): [UserInternalBalance!]!
     users(
@@ -1855,6 +2070,11 @@ type Query {
         orderBy: User_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: User_filter
     ): [User!]!
 }
@@ -1870,6 +2090,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): AmpUpdate
     ampUpdates(
         """
@@ -1880,6 +2105,11 @@ type Subscription {
         orderBy: AmpUpdate_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: AmpUpdate_filter
     ): [AmpUpdate!]!
     balancer(
@@ -1888,6 +2118,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Balancer
     balancerSnapshot(
         """
@@ -1895,6 +2130,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): BalancerSnapshot
     balancerSnapshots(
         """
@@ -1905,6 +2145,11 @@ type Subscription {
         orderBy: BalancerSnapshot_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: BalancerSnapshot_filter
     ): [BalancerSnapshot!]!
     balancers(
@@ -1916,6 +2161,11 @@ type Subscription {
         orderBy: Balancer_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Balancer_filter
     ): [Balancer!]!
     gradualWeightUpdate(
@@ -1924,6 +2174,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): GradualWeightUpdate
     gradualWeightUpdates(
         """
@@ -1934,6 +2189,11 @@ type Subscription {
         orderBy: GradualWeightUpdate_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: GradualWeightUpdate_filter
     ): [GradualWeightUpdate!]!
     investment(
@@ -1942,6 +2202,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Investment
     investments(
         """
@@ -1952,6 +2217,11 @@ type Subscription {
         orderBy: Investment_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Investment_filter
     ): [Investment!]!
     joinExit(
@@ -1960,6 +2230,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): JoinExit
     joinExits(
         """
@@ -1970,6 +2245,11 @@ type Subscription {
         orderBy: JoinExit_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: JoinExit_filter
     ): [JoinExit!]!
     latestPrice(
@@ -1978,6 +2258,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): LatestPrice
     latestPrices(
         """
@@ -1988,6 +2273,11 @@ type Subscription {
         orderBy: LatestPrice_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: LatestPrice_filter
     ): [LatestPrice!]!
     pool(
@@ -1996,6 +2286,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Pool
     poolHistoricalLiquidities(
         """
@@ -2006,6 +2301,11 @@ type Subscription {
         orderBy: PoolHistoricalLiquidity_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: PoolHistoricalLiquidity_filter
     ): [PoolHistoricalLiquidity!]!
     poolHistoricalLiquidity(
@@ -2014,6 +2314,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): PoolHistoricalLiquidity
     poolShare(
         """
@@ -2021,6 +2326,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): PoolShare
     poolShares(
         """
@@ -2031,6 +2341,11 @@ type Subscription {
         orderBy: PoolShare_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: PoolShare_filter
     ): [PoolShare!]!
     poolSnapshot(
@@ -2039,6 +2354,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): PoolSnapshot
     poolSnapshots(
         """
@@ -2049,6 +2369,11 @@ type Subscription {
         orderBy: PoolSnapshot_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: PoolSnapshot_filter
     ): [PoolSnapshot!]!
     poolToken(
@@ -2057,6 +2382,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): PoolToken
     poolTokens(
         """
@@ -2067,6 +2397,11 @@ type Subscription {
         orderBy: PoolToken_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: PoolToken_filter
     ): [PoolToken!]!
     pools(
@@ -2078,6 +2413,11 @@ type Subscription {
         orderBy: Pool_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Pool_filter
     ): [Pool!]!
     priceRateProvider(
@@ -2086,6 +2426,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): PriceRateProvider
     priceRateProviders(
         """
@@ -2096,6 +2441,11 @@ type Subscription {
         orderBy: PriceRateProvider_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: PriceRateProvider_filter
     ): [PriceRateProvider!]!
     swap(
@@ -2104,6 +2454,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Swap
     swaps(
         """
@@ -2114,6 +2469,11 @@ type Subscription {
         orderBy: Swap_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Swap_filter
     ): [Swap!]!
     token(
@@ -2122,6 +2482,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Token
     tokenPrice(
         """
@@ -2129,6 +2494,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): TokenPrice
     tokenPrices(
         """
@@ -2139,6 +2509,11 @@ type Subscription {
         orderBy: TokenPrice_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: TokenPrice_filter
     ): [TokenPrice!]!
     tokenSnapshot(
@@ -2147,6 +2522,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): TokenSnapshot
     tokenSnapshots(
         """
@@ -2157,6 +2537,11 @@ type Subscription {
         orderBy: TokenSnapshot_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: TokenSnapshot_filter
     ): [TokenSnapshot!]!
     tokens(
@@ -2168,6 +2553,11 @@ type Subscription {
         orderBy: Token_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Token_filter
     ): [Token!]!
     tradePair(
@@ -2176,6 +2566,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): TradePair
     tradePairSnapshot(
         """
@@ -2183,6 +2578,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): TradePairSnapshot
     tradePairSnapshots(
         """
@@ -2193,6 +2593,11 @@ type Subscription {
         orderBy: TradePairSnapshot_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: TradePairSnapshot_filter
     ): [TradePairSnapshot!]!
     tradePairs(
@@ -2204,6 +2609,11 @@ type Subscription {
         orderBy: TradePair_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: TradePair_filter
     ): [TradePair!]!
     user(
@@ -2212,6 +2622,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): User
     userInternalBalance(
         """
@@ -2219,6 +2634,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): UserInternalBalance
     userInternalBalances(
         """
@@ -2229,6 +2649,11 @@ type Subscription {
         orderBy: UserInternalBalance_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: UserInternalBalance_filter
     ): [UserInternalBalance!]!
     users(
@@ -2240,6 +2665,11 @@ type Subscription {
         orderBy: User_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: User_filter
     ): [User!]!
 }
@@ -2257,7 +2687,7 @@ type Swap {
     tokenOutSym: String!
     tx: Bytes!
     userAddress: User!
-    value: BigDecimal!
+    valueUSD: BigDecimal!
 }
 
 input Swap_filter {
@@ -2373,14 +2803,14 @@ input Swap_filter {
     userAddress_not_in: [String!]
     userAddress_not_starts_with: String
     userAddress_starts_with: String
-    value: BigDecimal
-    value_gt: BigDecimal
-    value_gte: BigDecimal
-    value_in: [BigDecimal!]
-    value_lt: BigDecimal
-    value_lte: BigDecimal
-    value_not: BigDecimal
-    value_not_in: [BigDecimal!]
+    valueUSD: BigDecimal
+    valueUSD_gt: BigDecimal
+    valueUSD_gte: BigDecimal
+    valueUSD_in: [BigDecimal!]
+    valueUSD_lt: BigDecimal
+    valueUSD_lte: BigDecimal
+    valueUSD_not: BigDecimal
+    valueUSD_not_in: [BigDecimal!]
 }
 
 enum Swap_orderBy {
@@ -2396,7 +2826,7 @@ enum Swap_orderBy {
     tokenOutSym
     tx
     userAddress
-    value
+    valueUSD
 }
 
 type Token {
@@ -2420,7 +2850,7 @@ type TokenPrice {
     id: ID!
     poolId: Pool!
     price: BigDecimal!
-    priceUsd: BigDecimal!
+    priceUSD: BigDecimal!
     pricingAsset: Bytes!
     timestamp: Int!
 }
@@ -2471,14 +2901,14 @@ input TokenPrice_filter {
     poolId_not_starts_with: String
     poolId_starts_with: String
     price: BigDecimal
-    priceUsd: BigDecimal
-    priceUsd_gt: BigDecimal
-    priceUsd_gte: BigDecimal
-    priceUsd_in: [BigDecimal!]
-    priceUsd_lt: BigDecimal
-    priceUsd_lte: BigDecimal
-    priceUsd_not: BigDecimal
-    priceUsd_not_in: [BigDecimal!]
+    priceUSD: BigDecimal
+    priceUSD_gt: BigDecimal
+    priceUSD_gte: BigDecimal
+    priceUSD_in: [BigDecimal!]
+    priceUSD_lt: BigDecimal
+    priceUSD_lte: BigDecimal
+    priceUSD_not: BigDecimal
+    priceUSD_not_in: [BigDecimal!]
     price_gt: BigDecimal
     price_gte: BigDecimal
     price_in: [BigDecimal!]
@@ -2509,7 +2939,7 @@ enum TokenPrice_orderBy {
     id
     poolId
     price
-    priceUsd
+    priceUSD
     pricingAsset
     timestamp
 }

@@ -228,6 +228,7 @@ export type Query_MetaArgs = {
 export type QueryBlockArgs = {
     block?: Maybe<Block_Height>;
     id: Scalars['ID'];
+    subgraphError?: _SubgraphErrorPolicy_;
 };
 
 export type QueryBlocksArgs = {
@@ -236,6 +237,7 @@ export type QueryBlocksArgs = {
     orderBy?: Maybe<Block_OrderBy>;
     orderDirection?: Maybe<OrderDirection>;
     skip?: Maybe<Scalars['Int']>;
+    subgraphError?: _SubgraphErrorPolicy_;
     where?: Maybe<Block_Filter>;
 };
 
@@ -254,6 +256,7 @@ export type Subscription_MetaArgs = {
 export type SubscriptionBlockArgs = {
     block?: Maybe<Block_Height>;
     id: Scalars['ID'];
+    subgraphError?: _SubgraphErrorPolicy_;
 };
 
 export type SubscriptionBlocksArgs = {
@@ -262,6 +265,7 @@ export type SubscriptionBlocksArgs = {
     orderBy?: Maybe<Block_OrderBy>;
     orderDirection?: Maybe<OrderDirection>;
     skip?: Maybe<Scalars['Int']>;
+    subgraphError?: _SubgraphErrorPolicy_;
     where?: Maybe<Block_Filter>;
 };
 

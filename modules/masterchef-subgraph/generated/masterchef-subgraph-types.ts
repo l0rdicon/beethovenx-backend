@@ -268,6 +268,7 @@ export type Query_MetaArgs = {
 export type QueryMasterChefArgs = {
     block?: Maybe<Block_Height>;
     id: Scalars['ID'];
+    subgraphError?: _SubgraphErrorPolicy_;
 };
 
 export type QueryMasterChefsArgs = {
@@ -276,12 +277,14 @@ export type QueryMasterChefsArgs = {
     orderBy?: Maybe<MasterChef_OrderBy>;
     orderDirection?: Maybe<OrderDirection>;
     skip?: Maybe<Scalars['Int']>;
+    subgraphError?: _SubgraphErrorPolicy_;
     where?: Maybe<MasterChef_Filter>;
 };
 
 export type QueryPoolArgs = {
     block?: Maybe<Block_Height>;
     id: Scalars['ID'];
+    subgraphError?: _SubgraphErrorPolicy_;
 };
 
 export type QueryPoolsArgs = {
@@ -290,12 +293,14 @@ export type QueryPoolsArgs = {
     orderBy?: Maybe<Pool_OrderBy>;
     orderDirection?: Maybe<OrderDirection>;
     skip?: Maybe<Scalars['Int']>;
+    subgraphError?: _SubgraphErrorPolicy_;
     where?: Maybe<Pool_Filter>;
 };
 
 export type QueryRewarderArgs = {
     block?: Maybe<Block_Height>;
     id: Scalars['ID'];
+    subgraphError?: _SubgraphErrorPolicy_;
 };
 
 export type QueryRewardersArgs = {
@@ -304,12 +309,14 @@ export type QueryRewardersArgs = {
     orderBy?: Maybe<Rewarder_OrderBy>;
     orderDirection?: Maybe<OrderDirection>;
     skip?: Maybe<Scalars['Int']>;
+    subgraphError?: _SubgraphErrorPolicy_;
     where?: Maybe<Rewarder_Filter>;
 };
 
 export type QueryUserArgs = {
     block?: Maybe<Block_Height>;
     id: Scalars['ID'];
+    subgraphError?: _SubgraphErrorPolicy_;
 };
 
 export type QueryUsersArgs = {
@@ -318,6 +325,7 @@ export type QueryUsersArgs = {
     orderBy?: Maybe<User_OrderBy>;
     orderDirection?: Maybe<OrderDirection>;
     skip?: Maybe<Scalars['Int']>;
+    subgraphError?: _SubgraphErrorPolicy_;
     where?: Maybe<User_Filter>;
 };
 
@@ -400,6 +408,7 @@ export type Subscription_MetaArgs = {
 export type SubscriptionMasterChefArgs = {
     block?: Maybe<Block_Height>;
     id: Scalars['ID'];
+    subgraphError?: _SubgraphErrorPolicy_;
 };
 
 export type SubscriptionMasterChefsArgs = {
@@ -408,12 +417,14 @@ export type SubscriptionMasterChefsArgs = {
     orderBy?: Maybe<MasterChef_OrderBy>;
     orderDirection?: Maybe<OrderDirection>;
     skip?: Maybe<Scalars['Int']>;
+    subgraphError?: _SubgraphErrorPolicy_;
     where?: Maybe<MasterChef_Filter>;
 };
 
 export type SubscriptionPoolArgs = {
     block?: Maybe<Block_Height>;
     id: Scalars['ID'];
+    subgraphError?: _SubgraphErrorPolicy_;
 };
 
 export type SubscriptionPoolsArgs = {
@@ -422,12 +433,14 @@ export type SubscriptionPoolsArgs = {
     orderBy?: Maybe<Pool_OrderBy>;
     orderDirection?: Maybe<OrderDirection>;
     skip?: Maybe<Scalars['Int']>;
+    subgraphError?: _SubgraphErrorPolicy_;
     where?: Maybe<Pool_Filter>;
 };
 
 export type SubscriptionRewarderArgs = {
     block?: Maybe<Block_Height>;
     id: Scalars['ID'];
+    subgraphError?: _SubgraphErrorPolicy_;
 };
 
 export type SubscriptionRewardersArgs = {
@@ -436,12 +449,14 @@ export type SubscriptionRewardersArgs = {
     orderBy?: Maybe<Rewarder_OrderBy>;
     orderDirection?: Maybe<OrderDirection>;
     skip?: Maybe<Scalars['Int']>;
+    subgraphError?: _SubgraphErrorPolicy_;
     where?: Maybe<Rewarder_Filter>;
 };
 
 export type SubscriptionUserArgs = {
     block?: Maybe<Block_Height>;
     id: Scalars['ID'];
+    subgraphError?: _SubgraphErrorPolicy_;
 };
 
 export type SubscriptionUsersArgs = {
@@ -450,6 +465,7 @@ export type SubscriptionUsersArgs = {
     orderBy?: Maybe<User_OrderBy>;
     orderDirection?: Maybe<OrderDirection>;
     skip?: Maybe<Scalars['Int']>;
+    subgraphError?: _SubgraphErrorPolicy_;
     where?: Maybe<User_Filter>;
 };
 

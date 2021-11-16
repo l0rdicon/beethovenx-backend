@@ -216,6 +216,11 @@ type Query {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Block
     blocks(
         """
@@ -226,6 +231,11 @@ type Query {
         orderBy: Block_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Block_filter
     ): [Block!]!
 }
@@ -241,6 +251,11 @@ type Subscription {
         """
         block: Block_height
         id: ID!
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
     ): Block
     blocks(
         """
@@ -251,6 +266,11 @@ type Subscription {
         orderBy: Block_orderBy
         orderDirection: OrderDirection
         skip: Int = 0
+
+        """
+        Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+        """
+        subgraphError: _SubgraphErrorPolicy_! = deny
         where: Block_filter
     ): [Block!]!
 }
